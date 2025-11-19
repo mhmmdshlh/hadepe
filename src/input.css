@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+/* EKG Animation */
+.ekg-container {
+    width: 100%;
+    max-width: 400px;
+    height: 100px;
+    background: linear-gradient(to right, #fee2e2, #fecaca);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(220, 38, 38, 0.1);
+}
+
+.ekg-line {
+    width: 100%;
+    height: 100%;
+}
+
+.ekg-path {
+    fill: none;
+    stroke: #dc2626;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawEkg 4s ease-in-out infinite;
+}
+
+@keyframes drawEkg {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -1000;
+    }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Form Styling */
+.form-group input:focus,
+.form-group select:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dc2626;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b91c1c;
+}
+
+/* Risk Display Colors */
+.risk-low {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+}
+
+.risk-medium {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #78350f;
+}
+
+.risk-high {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+    color: #991b1b;
+}
+
+.risk-critical {
+    background: linear-gradient(135deg, #fee2e2 0%, #ef4444 100%);
+    color: #7f1d1d;
+}
+
+/* Button Hover Effect */
+button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ekg-container {
+        max-width: 100%;
+        height: 80px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .text-4xl {
+        font-size: 2rem;
+    }
+}
+
+/* Icon Animations */
+.fa-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    10%,
+    30% {
+        transform: scale(0.9);
+    }
+
+    20%,
+    40% {
+        transform: scale(1.1);
+    }
+}
+
+/* Card Hover Effects */
+.bg-white.rounded-lg.shadow-md {
+    transition: all 0.3s ease;
+}
+
+.bg-white.rounded-lg.shadow-md:hover {
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Input Validation Styles */
+input:invalid:not(:placeholder-shown),
+select:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+input:valid:not(:placeholder-shown),
+select:valid:not(:placeholder-shown) {
+    border-color: #10b981;
+}
+
+/* Smooth Transitions */
+* {
+    transition: all 0.2s ease;
+}
+
+button,
+input,
+select {
+    transition: all 0.3s ease;
+}

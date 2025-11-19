@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Risiko Penyakit Jantung</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-center">
+                <i class="fas fa-heartbeat text-4xl mr-4 animate-pulse"></i>
+                <h1 class="text-3xl md:text-4xl font-bold">Prediksi Risiko Penyakit Jantung</h1>
+            </div>
+            <p class="text-center mt-2 text-red-100">Sistem Deteksi Dini Kesehatan Jantung</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section dengan Gambar EKG -->
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-1">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-stethoscope text-red-600 mr-2"></i>
+                        Cek Kesehatan Jantung Anda
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Sistem prediksi ini membantu Anda mengetahui tingkat risiko penyakit jantung berdasarkan data
+                        kesehatan pribadi.
+                        Isi formulir di bawah dengan data yang akurat untuk mendapatkan hasil prediksi yang optimal.
+                    </p>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <div class="ekg-container">
+                        <svg class="ekg-line" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+                            <path class="ekg-path"
+                                d="M0,50 L50,50 L60,30 L70,70 L80,50 L120,50 L130,20 L140,80 L150,50 L200,50 L210,30 L220,70 L230,50 L270,50 L280,20 L290,80 L300,50 L350,50 L360,30 L370,70 L380,50 L400,50" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h3 class="text-xl font-bold text-gray-800 mb-6 border-b-2 border-red-600 pb-2">
+                <i class="fas fa-clipboard-list text-red-600 mr-2"></i>
+                Data Kesehatan Pasien
+            </h3>
+
+            <form id="healthForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Usia -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            <i class="fas fa-birthday-cake text-red-600 mr-2"></i>Usia (tahun)
+                        </label>
+                        <input type="number" id="age" name="age" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+                            placeholder="Masukkan usia" min="1" max="1200">
+                    </div>
+
+                    <!-- Jenis Kelamin -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            <i class="fas fa-venus-mars text-red-600 mr-2"></i>Jenis Kelamin
+                        </label>
+                        <select id="gender" name="gender" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="male">Laki-laki</option>
+                            <option value="female">Perempuan</option>
+                        </select>
+                    </div>
+
+                    <!-- Nyeri Dada -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="chest_pain">
+                            <i class="fas fa-heart-circle-exclamation text-red-600 mr-2"></i>Apakah mengalami nyeri
+                            dada?
+                        </label>
+                        <select id="chest_pain" name="chest_pain" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Sesak Napas -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="shortness_of_breath">
+                            <i class="fas fa-lungs text-red-600 mr-2"></i>Apakah mengalami sesak napas?
+                        </label>
+                        <select id="shortness_of_breath" name="shortness_of_breath" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Kelelahan Berlebihan -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="fatigue">
+                            <i class="fa-solid fa-battery-quarter text-red-600 mr-2"></i>Apakah mengalami kelelahan
+                            berlebihan?
+                        </label>
+                        <select id="fatigue" name="fatigue" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Detak Jantung -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="palpitations">
+                            <i class="fas fa-heartbeat text-red-600 mr-2"></i>Detak Jantung tidak teratur atau cepat?
+                        </label>
+                        <select id="palpitations" name="palpitations" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Pusing -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="dizziness">
+                            <i class="fas fa-face-dizzy text-red-600 mr-2"></i>Pusing atau rasa ingin pingsan?
+                        </label>
+                        <select id="dizziness" name="dizziness" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Pembengkakan Kaki -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="swelling">
+                            <i class="fas fa-shoe-prints text-red-600 mr-2"></i>Pembengkakan pada kaki atau
+                            pergelangan kaki?
+                        </label>
+                        <select id="swelling" name="swelling" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Nyeri yang Menjalar -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="radiating_pain">
+                            <i class="fas fa-radiation-alt text-red-600 mr-2"></i>Nyeri yang menjalar ke lengan, leher,
+                            rahang, atau punggung?
+                        </label>
+                        <select id="radiating_pain" name="radiating_pain" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Keringat Dingin -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="cold_sweat">
+                            <i class="fa-solid fa-droplet text-red-600 mr-2"></i>Apakah mengalami keringat dingin
+                            disertai mual?
+                        </label>
+                        <select id="cold_sweat" name="cold_sweat" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Riwayat Tekanan Darah -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="blood_pressure_history">
+                            <i class="ri-line-chart-line text-red-600 mr-2"></i>Apakah memiliki riwayat tekanan
+                            darah tinggi?
+                        </label>
+                        <select id="blood_pressure_history" name="blood_pressure_history" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Kadar Kolestrol -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="cholesterol_level">
+                            <i class="ri-bubble-chart-line text-red-600 mr-2"></i>Apakah memiliki kadar kolestrol
+                            tinggi?
+                        </label>
+                        <select id="cholesterol_level" name="cholesterol_level" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Riwayat Diabetes -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="diabetes_history">
+                            <i class="ri-syringe-line text-red-600 mr-2"></i>Apakah memiliki riwayat diabetes?
+                        </label>
+                        <select id="diabetes_history" name="diabetes_history" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Riwayat Merokok -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="smoking_history">
+                            <i class="fas fa-smoking text-red-600 mr-2"></i>Apakah memiliki riwayat merokok?
+                        </label>
+                        <select id="smoking_history" name="smoking_history" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Obesitas -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="obesity">
+                            <i class="fa-solid fa-weight-scale text-red-600 mr-2"></i>Apakah mengalami obesitas?
+                        </label>
+                        <select id="obesity" name="obesity" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Gaya Hidup -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="lifestyle">
+                            <i class="fas fa-running text-red-600 mr-2"></i>Apakah memiliki gaya hidup tidak sehat?
+                        </label>
+                        <select id="lifestyle" name="lifestyle" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Riwayat Keluarga -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="family_history">
+                            <i class="fas fa-users text-red-600 mr-2"></i>Apakah keluarga memiliki riwayat penyakit
+                            jantung?
+                        </label>
+                        <select id="family_history" name="family_history" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Stress Kronik -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2" for="chronic_stress">
+                            <i class="fas fa-brain text-red-600 mr-2"></i>Apakah mengalami stress kronik?
+                        </label>
+                        <select id="chronic_stress" name="chronic_stress" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                            <option value="" disabled hidden selected>-- Pilih --</option>
+                            <option value="Yes">Ya</option>
+                            <option value="No">Tidak</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="flex justify-center mt-8 md:col-span-2">
+                        <button type="submit"
+                            class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-12 rounded-lg shadow-lg transform transition hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
+                            <i class="fas fa-calculator mr-2"></i>
+                            Hitung Risiko
+                        </button>
+                    </div>
+            </form>
+        </section>
+
+        <!-- Result Section -->
+        <section id="resultSection" class="bg-white rounded-lg shadow-md p-6 hidden">
+            <h3 class="text-xl font-bold text-gray-800 mb-6 border-b-2 border-red-600 pb-2">
+                <i class="fas fa-chart-line text-red-600 mr-2"></i>
+                Hasil Prediksi
+            </h3>
+
+            <div id="resultContent" class="space-y-6">
+                <!-- Risk Level Display -->
+                <div class="text-center p-8 rounded-lg" id="riskDisplay">
+                    <div class="mb-4">
+                        <i class="fas fa-heart text-6xl" id="riskIcon"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold mb-2" id="riskLevel">Tingkat Risiko</h4>
+                    <p class="text-xl" id="riskPercentage">0%</p>
+                </div>
+
+                <!-- Detailed Information -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <i class="fas fa-info-circle text-3xl text-blue-600 mb-2"></i>
+                        <h5 class="font-semibold text-gray-800 mb-1">Status</h5>
+                        <p class="text-gray-600" id="statusText">-</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <i class="fas fa-exclamation-triangle text-3xl text-yellow-600 mb-2"></i>
+                        <h5 class="font-semibold text-gray-800 mb-1">Kategori</h5>
+                        <p class="text-gray-600" id="categoryText">-</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center">
+                        <i class="fas fa-shield-alt text-3xl text-green-600 mb-2"></i>
+                        <h5 class="font-semibold text-gray-800 mb-1">Prioritas</h5>
+                        <p class="text-gray-600" id="priorityText">-</p>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="bg-red-50 border-l-4 border-red-600 p-4 rounded">
+                    <h5 class="font-bold text-red-800 mb-3">
+                        <i class="fas fa-notes-medical mr-2"></i>Rekomendasi
+                    </h5>
+                    <ul id="recommendations" class="space-y-2 text-gray-700">
+                        <!-- Dynamically filled -->
+                    </ul>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="bg-yellow-50 border border-yellow-300 p-4 rounded-lg">
+                    <p class="text-sm text-yellow-800">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        <strong>Catatan:</strong> Hasil ini hanya bersifat prediksi dan tidak menggantikan diagnosis
+                        medis profesional.
+                        Konsultasikan dengan dokter untuk pemeriksaan lebih lanjut.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">
+                <i class="fas fa-heartbeat text-red-500 mr-2"></i>
+                Sistem Prediksi Risiko Penyakit Jantung
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
