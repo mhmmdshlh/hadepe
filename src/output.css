@@ -567,6 +567,22 @@
     }
   }
 }
+@layer utilities {
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    10%, 30% {
+      transform: scale(0.9);
+    }
+    20%, 40% {
+      transform: scale(1.1);
+    }
+  }
+  .animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+}
 .ekg-container {
   width: 100%;
   max-width: 400px;
@@ -689,20 +705,6 @@ button[type="submit"]:active {
   }
   .text-4xl {
     font-size: 2rem;
-  }
-}
-.fa-heartbeat {
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-@keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  10%, 30% {
-    transform: scale(0.9);
-  }
-  20%, 40% {
-    transform: scale(1.1);
   }
 }
 .bg-white.rounded-lg.shadow-md {
