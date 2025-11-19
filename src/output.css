@@ -14,17 +14,14 @@
     --color-red-600: oklch(57.7% 0.245 27.325);
     --color-red-700: oklch(50.5% 0.213 27.518);
     --color-red-800: oklch(44.4% 0.177 26.899);
-    --color-orange-600: oklch(64.6% 0.222 41.116);
     --color-yellow-50: oklch(98.7% 0.026 102.212);
     --color-yellow-300: oklch(90.5% 0.182 98.111);
     --color-yellow-600: oklch(68.1% 0.162 75.834);
     --color-yellow-800: oklch(47.6% 0.114 61.907);
     --color-green-600: oklch(62.7% 0.194 149.214);
-    --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-300: oklch(87.2% 0.01 258.338);
-    --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
@@ -46,7 +43,6 @@
     --font-weight-bold: 700;
     --leading-relaxed: 1.625;
     --radius-lg: 0.5rem;
-    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -224,9 +220,6 @@
   .mx-auto {
     margin-inline: auto;
   }
-  .mt-1 {
-    margin-top: calc(var(--spacing) * 1);
-  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -292,9 +285,6 @@
   }
   .items-center {
     align-items: center;
-  }
-  .items-start {
-    align-items: flex-start;
   }
   .justify-center {
     justify-content: center;
@@ -456,9 +446,6 @@
   }
   .text-green-600 {
     color: var(--color-green-600);
-  }
-  .text-orange-600 {
-    color: var(--color-orange-600);
   }
   .text-red-100 {
     color: var(--color-red-100);
@@ -725,8 +712,11 @@ button[type="submit"]:active {
   box-shadow: 0 10px 25px rgba(220, 38, 38, 0.15);
   transform: translateY(-2px);
 }
-input:invalid:not(:placeholder-shown), select:invalid:not(:placeholder-shown) {
+input:invalid:not(:placeholder-shown), select:invalid:not(:placeholder-shown), select:invalid:not([value=""]) {
   border-color: #ef4444;
+}
+select:required:invalid {
+  border-color: #d1d5db;
 }
 input:valid:not(:placeholder-shown), select:valid:not(:placeholder-shown) {
   border-color: #10b981;

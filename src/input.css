@@ -199,8 +199,13 @@ button[type="submit"]:active {
 
 /* Input Validation Styles */
 input:invalid:not(:placeholder-shown),
-select:invalid:not(:placeholder-shown) {
+select:invalid:not(:placeholder-shown),
+select:invalid:not([value=""]) {
     border-color: #ef4444;
+}
+
+select:required:invalid {
+    border-color: #d1d5db;
 }
 
 input:valid:not(:placeholder-shown),
