@@ -25,44 +25,25 @@ async function checkAPIConnection() {
 }
 
 async function calculateRisk() {
-    const age = parseInt(document.getElementById('age').value);
-    const gender = document.getElementById('gender').value;
-    const chest_pain = document.getElementById('chest_pain').value;
-    const shortness_of_breath = document.getElementById('shortness_of_breath').value;
-    const fatigue = document.getElementById('fatigue').value;
-    const palpitations = document.getElementById('palpitations').value;
-    const dizziness = document.getElementById('dizziness').value;
-    const swelling = document.getElementById('swelling').value;
-    const radiating_pain = document.getElementById('radiating_pain').value;
-    const cold_sweat = document.getElementById('cold_sweat').value;
-    const blood_pressure_history = document.getElementById('blood_pressure_history').value;
-    const cholesterol_level = document.getElementById('cholesterol_level').value;
-    const diabetes_history = document.getElementById('diabetes_history').value;
-    const smoking_history = document.getElementById('smoking_history').value;
-    const obesity = document.getElementById('obesity').value;
-    const lifestyle = document.getElementById('lifestyle').value;
-    const family_history = document.getElementById('family_history').value;
-    const chronic_stress = document.getElementById('chronic_stress').value;
-
     const formData = {
-        age: age,
-        gender: gender,
-        chest_pain: chest_pain,
-        shortness_of_breath: shortness_of_breath,
-        fatigue: fatigue,
-        palpitations: palpitations,
-        dizziness: dizziness,
-        swelling: swelling,
-        radiating_pain: radiating_pain,
-        cold_sweat: cold_sweat,
-        blood_pressure_history: blood_pressure_history,
-        cholesterol_level: cholesterol_level,
-        diabetes_history: diabetes_history,
-        smoking_history: smoking_history,
-        obesity: obesity,
-        lifestyle: lifestyle,
-        family_history: family_history,
-        chronic_stress: chronic_stress
+        age: parseInt(document.getElementById('age').value),
+        gender: document.getElementById('gender').value,
+        chest_pain: document.getElementById('chest_pain').value,
+        shortness_of_breath: document.getElementById('shortness_of_breath').value,
+        fatigue: document.getElementById('fatigue').value,
+        palpitations: document.getElementById('palpitations').value,
+        dizziness: document.getElementById('dizziness').value,
+        swelling: document.getElementById('swelling').value,
+        radiating_pain: document.getElementById('radiating_pain').value,
+        cold_sweat: document.getElementById('cold_sweat').value,
+        blood_pressure_history: document.getElementById('blood_pressure_history').value,
+        cholesterol_level: document.getElementById('cholesterol_level').value,
+        diabetes_history: document.getElementById('diabetes_history').value,
+        smoking_history: document.getElementById('smoking_history').value,
+        obesity: document.getElementById('obesity').value,
+        lifestyle: document.getElementById('lifestyle').value,
+        family_history: document.getElementById('family_history').value,
+        chronic_stress: document.getElementById('chronic_stress').value
     };
 
     const submitButton = document.querySelector('button[type="submit"]');
@@ -80,8 +61,8 @@ async function calculateRisk() {
         });
 
         if (!response.ok) {
-            const errorData = await response.json().catch(() => null);
-            throw new Error(`API request failed: ${response.status}`);
+            const errorText = await response.text();
+            throw new Error(`Server Error: ${response.status} - ${errorText}`);
         }
 
         const result = await response.json();
@@ -89,12 +70,12 @@ async function calculateRisk() {
         if (result.success) {
             displayResultsFromAPI(result);
         } else {
-            throw new Error(result.message || 'Prediction failed');
+            throw new Error(result.message || 'Gagal memprediksi');
         }
 
     } catch (error) {
-        alert('Gagal terhubung ke server!');
-
+        console.error('Error:', error);
+        alert('Gagal terhubung ke server! Cek Console untuk detail.');
     } finally {
         submitButton.innerHTML = originalButtonText;
         submitButton.disabled = false;
