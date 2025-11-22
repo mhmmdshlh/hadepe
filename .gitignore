@@ -3,3 +3,6 @@ node_modules/
 *.log
 .env
 .vscode/
+__pycache__/
+venv/
+
