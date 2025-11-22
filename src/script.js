@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/predict';
+const API_URL = 'https://mskjdn.pythonanywhere.com/predict';
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('healthForm');
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function checkAPIConnection() {
     try {
-        const response = await fetch('http://localhost:5000/health', {
+        const response = await fetch('https://mskjdn.pythonanywhere.com/health', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
